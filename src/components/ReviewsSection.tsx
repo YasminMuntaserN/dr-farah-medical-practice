@@ -325,6 +325,7 @@ const ReviewsSection = () => {
 
           <div className="text-center mt-8 sm:mt-12">
             <button
+              onClick={() => window.open("https://www.google.com/maps/place/Health+Hive+Paediatric+Clinic/@-33.9266462,18.5026765,17z", "_blank")}
               className={`group border-2 border-emerald-600 ${COLORS.elements.emerald} px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-sm font-medium hover:bg-emerald-600 hover:text-white transition-all duration-300 relative overflow-hidden inline-block`}
             >
               <div className="absolute inset-0 bg-emerald-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
