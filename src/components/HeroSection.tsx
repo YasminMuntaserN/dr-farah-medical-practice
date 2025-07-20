@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Award, Shield, Star, Calendar, ArrowRight, Play, CheckCircle } from 'lucide-react';
+import { Award, Shield, Star, Play } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
 
 interface HeroSectionProps {
@@ -31,27 +31,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   <span className={`bg-gradient-to-r ${COLORS.text.accent} bg-clip-text text-transparent block animate-fade-in`}>
-                    Expert Internal Medicine
+                    Adept Medical Care
                   </span>
                   <span className={`${COLORS.text.primary} text-2xl sm:text-3xl md:text-4xl font-bold mt-2 block animate-fade-in`}
                     style={{ animationDelay: '0.2s' }}>
-                    Meets Compassionate Care
+                    Tailored to Your Needs
                   </span>
                 </h1>
 
                 <p className={`text-lg sm:text-xl ${COLORS.text.secondary} leading-relaxed max-w-2xl mx-auto animate-fade-in`}
                   style={{ animationDelay: '0.4s' }}>
-                  Welcome to Dr. Farah Dawood's Medical Practice – where advanced medical expertise
-                  combines with personalized, compassionate patient care in the heart of Umhlanga.
+                  Welcome to Dr. Farah Dawood’s Medical Practice – a space where expert internal medicine meets compassionate care.
+                  Our mission is to provide holistic, evidence-based medical care tailored to your individual needs.
                 </p>
               </div>
             </div>
 
-            {/* Credentials Section */}
             <div className={`space-y-6 mb-12 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: '0.3s' }}>
 
-              {/* Credential Badges */}
               <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                 {[
                   { icon: Award, text: "MBChB Cum Laude", color: "amber" },
@@ -64,24 +62,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     <credential.icon className={`w-5 h-5 ${credential.color === 'amber' ? COLORS.elements.amber : COLORS.elements.emerald}`} />
                     <span className={`font-semibold ${COLORS.text.tertiary} text-sm sm:text-base`}>
                       {credential.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
-                {[
-                  "Board Certified",
-                  "Insurance Accepted",
-                  "Same Day Appointments"
-                ].map((indicator, index) => (
-                  <div key={index}
-                    className={`flex items-center space-x-2 animate-fade-in`}
-                    style={{ animationDelay: `${0.9 + index * 0.1}s` }}>
-                    <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 ${COLORS.elements.emerald}`} />
-                    <span className={`text-xs sm:text-sm ${COLORS.text.secondary}`}>
-                      {indicator}
                     </span>
                   </div>
                 ))}

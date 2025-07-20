@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stethoscope, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 interface FooterProps {
   scrollToSection: (sectionId: string) => void;
@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
           </div>
           <div>
             <h3 className="text-2xl font-bold text-white">Dr. Farah Dawood</h3>
-            <p className="text-emerald-200">Internal Medicine Specialist</p>
+            <p className="text-emerald-200">Dedicated Medical Practitioner</p>
           </div>
         </div>
 
@@ -35,6 +35,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
               { name: 'About Me', section: 'about' },
               { name: 'Services', section: 'services' },
               { name: 'Appointments', section: 'appointments' },
+              { name: 'Reviews', section: 'reviews' },
               { name: 'Contact', section: 'contact' }
             ].map((item) => (
               <li key={item.name}>

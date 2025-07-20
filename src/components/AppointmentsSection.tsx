@@ -3,11 +3,11 @@ import { Calendar, QrCode, Phone, CheckCircle } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
 
 interface AppointmentsSectionProps {
-  setShowBookingModal: (show: boolean) => void;
+  openBookingAndScroll: () => void;
 }
 
 
-const AppointmentsSection: React.FC<AppointmentsSectionProps> = ({ setShowBookingModal }) => (
+const AppointmentsSection: React.FC<AppointmentsSectionProps> = ({ openBookingAndScroll }) => (
   <section id="appointments" className="py-16 bg-white">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
@@ -57,7 +57,7 @@ const AppointmentsSection: React.FC<AppointmentsSectionProps> = ({ setShowBookin
               </div>
               <p className={`${COLORS.text.secondary} text-sm mb-3`}>Scan to Book Your Appointment</p>
               <button
-                onClick={() => setShowBookingModal(true)}
+                onClick={() => openBookingAndScroll()}
                 className={`bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} px-4 py-2 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200`}
               >
                 Open Booking Portal
@@ -71,7 +71,7 @@ const AppointmentsSection: React.FC<AppointmentsSectionProps> = ({ setShowBookin
             <h3 className={`text-xl font-semibold ${COLORS.text.primary} mb-4`}>Booking Options</h3>
             <div className="space-y-3">
               <button
-                onClick={() => setShowBookingModal(true)}
+                onClick={() => openBookingAndScroll()}
                 className={`w-full bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} p-3 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2`}
               >
                 <Calendar className="w-4 h-4" />

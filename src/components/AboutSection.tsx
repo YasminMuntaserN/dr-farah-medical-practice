@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Award, CheckCircle, Heart, Stethoscope } from 'lucide-react';
+import { Award, BookOpen, CheckCircle, Heart, Stethoscope, Users } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
 
 
@@ -52,10 +52,6 @@ const AboutSection: React.FC = () => {
         <span className={`bg-gradient-to-r ${COLORS.text.accent} bg-clip-text text-transparent font-medium`}>
           Dr. Farah Dawood</span>
       </h2>
-      <p className={`text-lg md:text-xl ${COLORS.text.secondary} max-w-3xl mx-auto px-4`}>
-        A dedicated internal medicine specialist committed to providing exceptional healthcare
-        with a focus on comprehensive diagnosis and personalized treatment plans.
-      </p>
     </div>
   );
 
@@ -70,7 +66,7 @@ const AboutSection: React.FC = () => {
           <li className="flex items-start space-x-3">
             <CheckCircle className={`w-5 h-5 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`} />
             <span className={`${COLORS.text.tertiary} text-sm md:text-base`}>
-              <strong>MBChB Cum Laude</strong> - Graduated with highest honors
+              <strong>MBChB</strong> - Qualified Medical Doctor
             </span>
           </li>
           <li className="flex items-start space-x-3">
@@ -105,10 +101,11 @@ const AboutSection: React.FC = () => {
             </p>
           </div>
           <div>
-            <h4 className={`font-semibold ${COLORS.text.primary} text-sm md:text-base`}>Department Specializations</h4>
+            <h4 className={`font-semibold ${COLORS.text.primary} text-sm md:text-base`}>Subspecialty Experience</h4>
             <p className={`${COLORS.text.secondary} text-sm md:text-base`}>
-              Cardiology, Pulmonology, Nephrology, Endocrinology, and General Internal Medicine
+              She has worked in various subspecialty departments including Cardiology, Pulmonology, Nephrology, Gastroenterology, Endocrinology, Haematology, Neurology, Geriatrics and Infectious Diseases.
             </p>
+
           </div>
         </div>
       </div>
@@ -120,9 +117,7 @@ const AboutSection: React.FC = () => {
       <div className={`bg-gradient-to-br ${COLORS.background.profileCard} p-6 md:p-8 rounded-2xl shadow-2xl ${COLORS.text.white} transform hover:scale-105 transition-transform duration-300`}>
         <h3 className="text-xl md:text-2xl font-bold mb-6">Practice Philosophy</h3>
         <blockquote className="text-base md:text-lg leading-relaxed italic mb-6">
-          "My approach to medicine centers on comprehensive care that treats not just symptoms,
-          but the whole person. Every patient deserves personalized attention, thorough evaluation,
-          and a treatment plan tailored to their unique needs."
+          “My approach to medicine centers on comprehensive care that treats not just symptoms, but the whole person. Every patient deserves personalized attention, thorough evaluation, and a treatment plan tailored to their unique needs.”
         </blockquote>
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center">
@@ -136,35 +131,29 @@ const AboutSection: React.FC = () => {
       </div>
     </div>
   );
+  const AboutMeBox = () => (
+    <div className="relative bg-gradient-to-br from-white/95 via-green-50/40 to-green-100/50 backdrop-blur-sm p-8 rounded-3xl border border-white/20 overflow-hidden shadow-xl">
+      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+        <BookOpen className="w-24 h-24 text-green-800" />
+      </div>
 
-  const ImageSection = () => (
-    <div className={`${ANIMATIONS.transition} ${visibleCards.image ? ANIMATIONS.visible : ANIMATIONS.fadeInRight} delay-600`}>
-      <div className="relative">
-        <div className="space-y-6">
-          <div className="relative group overflow-hidden rounded-3xl shadow-2xl">
-            <div className={`absolute inset-0 bg-gradient-to-t ${COLORS.background.overlay} opacity-0 group-hover:opacity-100 transition-all duration-500 z-10`}></div>
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500 z-10"></div>
-            <img
-              src="/ProfessionalEnvironment.jpg"
-              alt="Dr. Farah Dawood's Medical Practice - Professional Environment"
-              className="w-full h-[200px] md:h-[300px] lg:h-[400px] transform group-hover:scale-110 transition-transform duration-700"
-            />
-            <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
-              <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-xl shadow-lg">
-                <p className={`text-sm font-semibold ${COLORS.text.primary}`}>Professional Environment</p>
-              </div>
-            </div>
+      <div className="relative z-10">
+        <div className="flex items-center mb-6">
+          <div className="w-14 h-14 bg-gradient-to-r from-green-800 to-green-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <Users className="w-7 h-7 text-white" />
+          </div>
+          <div className="ml-4">
+            <h3 className="text-2xl font-bold text-gray-900">About Dr. Farah</h3>
           </div>
         </div>
 
-        <div className={`absolute -top-6 -left-6 w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br ${COLORS.floating.emerald} rounded-full opacity-20 animate-pulse shadow-lg`}></div>
-        <div className={`absolute -bottom-6 -right-6 w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br ${COLORS.floating.amber} rounded-full opacity-20 animate-bounce shadow-lg`}></div>
-        <div className={`absolute top-1/2 -right-4 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${COLORS.floating.blue} rounded-full opacity-15 animate-pulse delay-1000 shadow-lg`}></div>
-
-        <div className={`absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r ${COLORS.background.profileCard} rounded-full opacity-30 animate-pulse`}></div>
+        <p className="text-gray-600 leading-relaxed mb-6">
+          Dr. Farah Dawood is an accomplished medical doctor with a focus on internal medicine and over a decade of experience in medical practice. Having earned her MBChB Cum Laude and received the prize for Internal Medicine in her final year, she is known for her thorough, empathetic, and patient-centered approach to care.
+        </p>
       </div>
     </div>
   );
+
 
   return (
     <div className={`min-h-screen relative overflow-hidden bg-gradient-to-br ${COLORS.background.primary} font-lato`}>
@@ -180,13 +169,14 @@ const AboutSection: React.FC = () => {
               <ExperienceCard />
 
               <div className="block">
-                <PhilosophyCard />
+                <AboutMeBox />
               </div>
             </div>
 
             <div className="space-y-6 md:space-y-8">
               <AchievementCard />
-              <ImageSection />
+              <PhilosophyCard />
+
             </div>
           </div>
         </div>

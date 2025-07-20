@@ -5,14 +5,14 @@ import { COLORS } from '../utilities/colors';
 interface NavbarProps {
   isScrolled: boolean;
   activeSection: string;
-  setShowBookingModal: (show: boolean) => void;
+  openBookingAndScroll: () => void;
   scrollToSection: (sectionId: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   isScrolled,
   activeSection,
-  setShowBookingModal,
+  openBookingAndScroll,
   scrollToSection,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'appointments', label: 'Appointments' },
+    { id: 'reviews', label: 'Reviews' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -31,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   const handleBookingClick = () => {
-    setShowBookingModal(true);
+    openBookingAndScroll();
     setIsMobileMenuOpen(false);
   };
 
@@ -48,11 +49,11 @@ const Navbar: React.FC<NavbarProps> = ({
               <h1 className={`text-lg lg:text-xl font-bold bg-gradient-to-r ${COLORS.text.accent} bg-clip-text text-transparent`}>
                 Dr. Farah Dawood
               </h1>
-              <p className={`text-xs lg:text-sm ${COLORS.text.secondary}`}>Internal Medicine</p>
+              <p className={`text-xs lg:text-sm ${COLORS.text.secondary}`}>Dedicated Medical Practitioner</p>
             </div>
           </div>
 
-          <div className="hidden md:flex space-x-6 lg:space-x-8">
+          <div className="hidden md:flex space-x-2">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
