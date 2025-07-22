@@ -113,7 +113,6 @@ const ReviewsSection = () => {
     return stars;
   };
 
-  const averageRating = reviewsData.reduce((sum, review) => sum + review.rating, 0) / reviewsData.length;
 
   const nextReview = () => {
     setActiveReview((prev) => (prev + 1) % reviewsData.length);
@@ -124,7 +123,7 @@ const ReviewsSection = () => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 via-white to-emerald-100">
+    <div className="relative overflow-hidden bg-gradient-to-br from-emerald-100 via-amber-50 to-emerald-100">
       <div className="absolute inset-0 opacity-20 sm:opacity-30">
         <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-2xl sm:blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
@@ -151,7 +150,7 @@ const ReviewsSection = () => {
 
           <div className="md:hidden">
             <div className="relative w-full max-w-sm mx-auto">
-              <div className={`bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-500 ${activeReview === 0 ? 'ring-2 ring-green-400/50' : ''
+              <div className={`bg-beige/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 relative overflow-hidden group hover:shadow-2xl transition-all duration-500 ${activeReview === 0 ? 'ring-2 ring-green-400/50' : ''
                 }`}>
                 <div className={`absolute inset-0 transition-all duration-700 rounded-2xl ${activeReview === 0
                   ? 'bg-gradient-to-br from-green-50/80 to-emerald-50/60 group-hover:from-green-50/60 to-emerald-50/40'
@@ -164,7 +163,7 @@ const ReviewsSection = () => {
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500'
                       : 'bg-gradient-to-r from-emerald-500 to-teal-500'
                       }`}>
-                      <Quote className="w-7 h-7 text-white" />
+                      <Quote className="w-7 h-7 text-beige" />
                     </div>
                   </div>
 
@@ -199,14 +198,14 @@ const ReviewsSection = () => {
 
               <button
                 onClick={prevReview}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 w-10 h-10 bg-beige/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50"
               >
                 <ChevronLeft className="w-5 h-5 text-emerald-600 group-hover:text-emerald-700" />
               </button>
 
               <button
                 onClick={nextReview}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 w-10 h-10 bg-beige/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50"
               >
                 <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:text-emerald-700" />
               </button>
@@ -216,7 +215,7 @@ const ReviewsSection = () => {
           <div className="hidden md:flex items-center justify-center space-x-4 lg:space-x-8">
             <button
               onClick={prevReview}
-              className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50 flex-shrink-0"
+              className="w-12 h-12 bg-beige/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50 flex-shrink-0"
             >
               <ChevronLeft className="w-6 h-6 text-emerald-600 group-hover:text-emerald-700" />
             </button>
@@ -237,7 +236,7 @@ const ReviewsSection = () => {
                         : 'transform scale-95 opacity-70 z-10'
                         } ${isFirstReview ? 'relative' : ''}`}
                     >
-                      <div className={`bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all duration-500 h-full flex flex-col ${isMainCard
+                      <div className={`bg-beige/90 backdrop-blur-sm rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all duration-500 h-full flex flex-col ${isMainCard
                         ? 'p-6 lg:p-8 shadow-2xl'
                         : 'p-5 lg:p-6'
                         } ${isFirstReview ? 'ring-2 ring-green-400/50' : ''}`}>
@@ -253,7 +252,7 @@ const ReviewsSection = () => {
                                 ? 'bg-gradient-to-r from-green-500 to-emerald-500'
                                 : 'bg-gradient-to-r from-emerald-500 to-green-500'
                               }`}>
-                              <Quote className={`text-white ${isMainCard ? 'w-7 h-7 lg:w-8 lg:h-8' : 'w-6 h-6'
+                              <Quote className={`text-beige ${isMainCard ? 'w-7 h-7 lg:w-8 lg:h-8' : 'w-6 h-6'
                                 }`} />
                             </div>
                           </div>
@@ -302,7 +301,7 @@ const ReviewsSection = () => {
 
             <button
               onClick={nextReview}
-              className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50 flex-shrink-0"
+              className="w-12 h-12 bg-beige/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:bg-emerald-50 flex-shrink-0"
             >
               <ChevronRight className="w-6 h-6 text-emerald-600 group-hover:text-emerald-700" />
             </button>
@@ -326,7 +325,7 @@ const ReviewsSection = () => {
           <div className="text-center mt-8 sm:mt-12">
             <button
               onClick={() => window.open("https://www.google.com/maps/place/Health+Hive+Paediatric+Clinic/@-33.9266462,18.5026765,17z", "_blank")}
-              className={`group border-2 border-emerald-600 ${COLORS.elements.emerald} px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-sm font-medium hover:bg-emerald-600 hover:text-white transition-all duration-300 relative overflow-hidden inline-block`}
+              className={`group border-2 border-emerald-600 ${COLORS.elements.emerald} px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-sm font-medium hover:bg-emerald-600 hover:text-beige transition-all duration-300 relative overflow-hidden inline-block`}
             >
               <div className="absolute inset-0 bg-emerald-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <span className="relative z-10">Read Our Reviews</span>

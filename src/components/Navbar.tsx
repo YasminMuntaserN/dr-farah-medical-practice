@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-beige/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 lg:py-4">
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={handleBookingClick}
-            className={`hidden md:block bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} px-4 py-2 lg:px-6 lg:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm lg:text-base`}
+            className={`hidden md:block bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.beige} px-4 py-2 lg:px-6 lg:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm lg:text-base`}
           >
             Book Now
           </button>
@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-emerald-100 shadow-lg">
+          <div className="md:hidden bg-beige/95 backdrop-blur-md border-t border-emerald-100 shadow-lg">
             <div className="px-2 py-4 space-y-2">
               {navigationItems.map((item) => (
                 <button
@@ -100,7 +100,7 @@ const Navbar: React.FC<NavbarProps> = ({
               ))}
               <button
                 onClick={handleBookingClick}
-                className={`w-full mt-4 bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} px-4 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
+                className={`w-full mt-4 bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.beige} px-4 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
               >
                 Book Now
               </button>

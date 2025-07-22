@@ -1,7 +1,7 @@
 
 export const COLORS = {
   background: {
-    primary: 'from-slate-50 via-white to-emerald-50',
+    primary: 'from-slate-50 via-beige to-emerald-50',
     cardGradient1: 'from-emerald-100 to-amber-100',
     cardGradient2: 'from-stone-50 to-emerald-50',
     profileCard: 'from-emerald-600 to-emerald-700',
@@ -14,7 +14,7 @@ export const COLORS = {
     secondary: 'text-gray-600',
     tertiary: 'text-gray-700',
     accent: 'from-emerald-600 to-green-600',
-    white: 'text-white',
+    white: 'text-beige',
     light: 'text-emerald-200',
   },
   elements: {

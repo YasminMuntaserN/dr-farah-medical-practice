@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
-  <footer id='contact' className="bg-gray-900 text-white relative overflow-hidden">
+  <footer id='contact' className="bg-gray-900 text-beige relative overflow-hidden">
     <div className="absolute inset-0 opacity-10">
       <div
         className="w-full h-full bg-gradient-to-br from-emerald-600/10 to-emerald-700/5"
@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
             <img src="/icon.png" alt="icon" className="w-6 h-8 lg:w-8 lg:h-8" />
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-white">Dr. Farah Dawood</h3>
+            <h3 className="text-2xl font-bold text-beige">Dr. Farah Dawood</h3>
             <p className="text-emerald-200">Dedicated Medical Practitioner</p>
           </div>
         </div>
@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
               key={index}
               className={`p-3 rounded-full ${social.color} transition-all duration-300 transform hover:scale-110`}
             >
-              <social.icon className="w-5 h-5 text-white" />
+              <social.icon className="w-5 h-5 text-beige" />
             </button>
           ))}
         </div>
@@ -69,30 +69,30 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
         <div className="grid md:grid-cols-3 gap-6 mb-8 text-gray-300">
           <div className="flex items-center justify-center space-x-3">
             <div className="p-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg">
-              <MapPin className="w-5 h-5 text-white" />
+              <MapPin className="w-5 h-5 text-beige" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-white">Location</p>
+              <p className="font-semibold text-beige">Location</p>
               <p className="text-sm">Protea Hotel, Umhlanga</p>
             </div>
           </div>
 
           <div className="flex items-center justify-center space-x-3">
             <div className="p-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg">
-              <Phone className="w-5 h-5 text-white" />
+              <Phone className="w-5 h-5 text-beige" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-white">Phone</p>
+              <p className="font-semibold text-beige">Phone</p>
               <p className="text-sm">+27 123 456 789</p>
             </div>
           </div>
 
           <div className="flex items-center justify-center space-x-3">
             <div className="p-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg">
-              <Mail className="w-5 h-5 text-white" />
+              <Mail className="w-5 h-5 text-beige" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-white">Email</p>
+              <p className="font-semibold text-beige">Email</p>
               <p className="text-sm">drfarahdawood@gmail.com</p>
             </div>
           </div>

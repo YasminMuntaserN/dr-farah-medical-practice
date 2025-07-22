@@ -19,11 +19,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-100 via-beige to-emerald-100`}>
 
       <img src="https://cdn.prod.website-files.com/64aa1514fb7bf4cdf7d8ca29/64aaf845262edc3f5419ec9b_logo-large-watermark.svg" loading="lazy" alt="" className="absolute inset-0 bg-cover bg-center bg-no-repeat" />
 
-      <section id="home" className="relative z-10 min-h-screen">
+      <section id="home" className="relative z-10 min-h-screen ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-5">
           <div className="flex flex-col items-center justify-center min-h-screen text-center">
 
@@ -57,7 +57,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   { icon: Star, text: "10+ Years Experience", color: "amber" }
                 ].map((credential, index) => (
                   <div key={index}
-                    className={`flex items-center space-x-2 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border ${credential.color === 'amber' ? 'border-amber-100' : 'border-emerald-100'} transform hover:scale-105 animate-slide-up`}
+                    className={`flex items-center space-x-2 bg-beige/90 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border ${credential.color === 'amber' ? 'border-amber-100' : 'border-emerald-100'} transform hover:scale-105 animate-slide-up`}
                     style={{ animationDelay: `${0.6 + index * 0.1}s` }}>
                     <credential.icon className={`w-5 h-5 ${credential.color === 'amber' ? COLORS.elements.amber : COLORS.elements.emerald}`} />
                     <span className={`font-semibold ${COLORS.text.tertiary} text-sm sm:text-base`}>
@@ -81,7 +81,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
               <button
                 onClick={() => scrollToSection('about')}
-                className={`group border-2 border-emerald-600 ${COLORS.elements.emerald} px-4 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:bg-emerald-600 hover:text-white transition-all duration-300 flex items-center justify-center space-x-2 relative overflow-hidden w-full sm:flex-1 animate-bounce-in`}
+                className={`group border-2 border-emerald-600 ${COLORS.elements.emerald} px-4 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:bg-emerald-600 hover:text-beige transition-all duration-300 flex items-center justify-center space-x-2 relative overflow-hidden w-full sm:flex-1 animate-bounce-in`}
                 style={{ animationDelay: '1.4s' }}>
                 <div className="absolute inset-0 bg-emerald-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 <Play className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" />

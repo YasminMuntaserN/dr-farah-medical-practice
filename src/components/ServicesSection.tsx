@@ -1,80 +1,72 @@
 import { useState, useEffect, useRef } from 'react';
-import { Stethoscope, Heart, Shield, Users, CheckCircle, Star } from 'lucide-react';
+import { Heart, Shield, Users, CheckCircle, Star, ArrowRight, Eye } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
+import ShowToggle from '../ui/ShowToggle';
 
 const services = [
   {
     title: "General Internal Medicine",
     description: "Comprehensive health assessments with a holistic approach to your wellbeing",
-    icon: Stethoscope,
     gradient: COLORS.serviceIcons.sage,
-    services: ["Comprehensive Health Assessments", "Holistic Diagnostic Evaluations", "Preventative Care"],
-    bgPattern: "radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%)"
+    services: ["Comprehensive Health Assessments", "Holistic Diagnostic Evaluations", "Preventative Care"],
+    image: './services/1.jpg'
   },
   {
     title: "Chronic Disease Management",
     description: "Compassionate, sustainable care for long-term health conditions",
-    icon: Heart,
     gradient: COLORS.serviceIcons.forest,
     services: ["Diabetes Care & Education", "Hypertension Management", "Thyroid Health Optimization"],
-    bgPattern: "radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%)"
+    image: './services/2.jpg'
   },
   {
     title: "Autoimmune Wellness",
     description: "Specialized care for autoimmune conditions",
-    icon: Shield,
     gradient: COLORS.serviceIcons.earth,
     services: ["Rheumatoid Arthritis Care", "Lupus Management", "Anti-inflammatory Protocols"],
-    bgPattern: "radial-gradient(circle at 60% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%), radial-gradient(circle at 20% 70%, rgba(239, 68, 68, 0.1) 0%, transparent 50%)"
+    image: './services/3.jpg'
   },
   {
     title: "Infectious Disease Care",
     description: "Expert treatment with a focus on immune system strengthening",
-    icon: Users,
     gradient: COLORS.serviceIcons.moss,
     services: ["HIV Comprehensive Care", "Infection Prevention", "Immune System Support"],
-    bgPattern: "radial-gradient(circle at 80% 60%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 30% 30%, rgba(129, 140, 248, 0.1) 0%, transparent 50%)"
+    image: './services/4.jpg'
   },
   {
     title: "Advanced Diagnostics",
     description: "State-of-the-art testing in a calm, healing environment",
-    icon: CheckCircle,
     gradient: COLORS.serviceIcons.gold,
     services: ["ECG & Cardiac Assessment", "Comprehensive Blood Analysis", "Specialized Diagnostic Workups"],
-    bgPattern: "radial-gradient(circle at 40% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%)"
+    image: './services/5.jpeg'
   },
   {
     title: "Preventive Wellness",
     description: "Proactive healthcare focused on natural prevention and vitality",
-    icon: Star,
     gradient: COLORS.serviceIcons.clay,
     services: ["Wellness Screenings", "Nutritional Counseling", "Lifestyle Medicine"],
-    bgPattern: "radial-gradient(circle at 30% 40%, rgba(34, 197, 94, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)"
+    image: './services/6.jpeg'
   }
 ];
 
-const ServicesSection = () => {
-  const [activeService, setActiveService] = useState(0);
+const medicalOfficeImages = [
+  {
+    url: "/ConsultationRoom.jpg",
+    title: "Treatment Room",
+    description: "Modern examination room with natural lighting and calming green tones"
+  },
+  {
+    url: "/ModernEquipment.jpg",
+    title: "Consultation Area",
+    description: "Comfortable waiting area with natural elements and warm ambiance"
+  }
+];
+
+const ProfessionalServicesDisplay = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
   const [hoveredService, setHoveredService] = useState(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const sectionRef = useRef(null);
-  const autoLoopRef = useRef(null);
-
-  const medicalOfficeImages = [
-    {
-      url: "/ConsultationRoom.jpg",
-      title: "Treatment Room",
-      description: "Modern examination room with natural lighting and calming green tones"
-    },
-    {
-      url: "/ModernEquipment.jpg",
-      title: "Consultation Area",
-      description: "Comfortable waiting area with natural elements and warm ambiance"
-    }
-  ];
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,20 +83,21 @@ const ServicesSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-loop through services
   useEffect(() => {
-    if (!isUserInteracting) {
-      autoLoopRef.current = setInterval(() => {
-        setActiveService((prev) => (prev + 1) % services.length);
-      }, 4000);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (autoLoopRef.current) {
-        clearInterval(autoLoopRef.current);
-      }
-    };
-  }, [isUserInteracting]);
+    return () => observer.disconnect();
+  }, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,21 +107,15 @@ const ServicesSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleServiceClick = (index) => {
-    setActiveService(index);
-    setIsUserInteracting(true);
-
-    setTimeout(() => {
-      setIsUserInteracting(false);
-    }, 10000);
-  };
+  const visibleServices = showAllServices ? services : services.slice(0, 3);
+  const shouldShowButton = services.length > 3;
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 via-white to-emerald-100">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+    <div className="relative overflow-hidden bg-gradient-to-br from-emerald-100 via-amber-50 to-emerald-100">
+      <div className="absolute inset-0 opacity-20 sm:opacity-30">
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-2xl sm:blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-2xl sm:blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <section
@@ -194,7 +181,7 @@ const ServicesSection = () => {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { icon: Heart, title: "Calming Atmosphere" },
                     { icon: Shield, title: "State-of-the-Art" },
@@ -223,72 +210,43 @@ const ServicesSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className={`group relative cursor-pointer transform transition-all duration-500 hover:scale-105 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
-                  style={{ transitionDelay: `${index * 100 + 600}ms` }}
-                  onClick={() => handleServiceClick(index)}
-                  onMouseEnter={() => setHoveredService(index)}
-                  onMouseLeave={() => setHoveredService(null)}
-                >
-                  <div
-                    className="relative p-8 rounded-3xl backdrop-blur-sm border border-white/20 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
-                    style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%), ${service.bgPattern}`
-                    }}
-                  >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/20 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-white/20 to-transparent rounded-full transform -translate-x-12 translate-y-12"></div>
-                    </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="hidden lg:contents">
+                {services.map((service, index) => (
+                  <ServiceCard
+                    key={index}
+                    service={service}
+                    index={index}
+                    isVisible={isVisible}
+                    setHoveredService={setHoveredService}
+                    hoveredService={hoveredService}
+                  />
+                ))}
+              </div>
 
-                    <div className="relative flex justify-center mb-6">
-                      <div className="w-14 h-14 lg:w-16 lg:h-16 relative group-hover:animate-bounce">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-500 transform group-hover:rotate-6`}>
-                        </div>
-                        <div className={`absolute inset-0 bg-gradient-to-tl ${service.gradient} rounded-2xl opacity-50 transform rotate-3 group-hover:rotate-12 transition-all duration-500`}>
-                        </div>
-
-                        <div className="relative w-full h-full flex items-center justify-center z-10">
-                          <service.icon className="w-6 h-6 lg:w-8 lg:h-8 text-white transition-all duration-300 group-hover:scale-110 drop-shadow-lg" />
-                        </div>
-
-                        <div className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500">
-                          <div className={`w-full h-full rounded-2xl bg-gradient-to-r ${service.gradient} opacity-30 animate-ping`}></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="relative z-10 text-center">
-                      <h4 className="text-lg lg:text-xl font-bold text-gray-800 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 transition-all duration-300">
-                        {service.title}
-                      </h4>
-
-                      <p className="text-sm lg:text-base text-gray-600 leading-relaxed mb-6 px-2 group-hover:text-gray-700 transition-colors duration-300">
-                        {service.description}
-                      </p>
-
-                      <div className="space-y-3 mb-6">
-                        {service.services.map((item, idx) => (
-                          <div
-                            key={idx}
-                            className={`flex items-center justify-center space-x-3 text-xs lg:text-sm text-gray-600 transform transition-all duration-300 ${hoveredService === index ? 'translate-x-0 opacity-100' : 'translate-x-2 opacity-80'}`}
-                            style={{ transitionDelay: `${idx * 50}ms` }}
-                          >
-                            <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 group-hover:text-emerald-600 transition-colors duration-300" />
-                            <span className="group-hover:font-medium transition-all duration-300">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-                  </div>
-                </div>
-              ))}
+              {/* Mobile: Show limited services with toggle */}
+              <div className="lg:hidden contents">
+                {visibleServices.map((service, index) => (
+                  <ServiceCard
+                    key={index}
+                    service={service}
+                    index={index}
+                    isVisible={isVisible}
+                    setHoveredService={setHoveredService}
+                    hoveredService={hoveredService}
+                  />
+                ))}
+              </div>
             </div>
+
+            {shouldShowButton && (
+              <div className="lg:hidden text-center pt-12">
+                <ShowToggle
+                  showAllServices={showAllServices}
+                  toggleServices={() => setShowAllServices(!showAllServices)}
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -296,4 +254,59 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection;
+const ServiceCard = ({ service, index, isVisible, setHoveredService, hoveredService }) => {
+  return (
+    <div
+      className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 overflow-hidden group transform transition-all duration-700 hover:scale-[1.02] ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+        }`}
+      style={{ transitionDelay: `${index * 150 + 400}ms` }}
+      onMouseEnter={() => setHoveredService(index)}
+      onMouseLeave={() => setHoveredService(null)}
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr]">
+        <div className="relative overflow-hidden">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-56 object-contain group-hover:scale-110 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent transition-opacity duration-500"></div>
+        </div>
+
+        <div className="p-6 flex flex-col justify-between space-y-4">
+          <div>
+            <div className="flex items-center space-x-2">
+              <div className={`w-1 h-6 bg-gradient-to-b ${service.gradient} rounded-full`}></div>
+              <h3 className="text-xl font-semibold text-gray-900 group-hover:text-emerald-800 transition-colors duration-300">
+                {service.title}
+              </h3>
+            </div>
+
+            <p className="mt-2 text-gray-600 text-sm">{service.description}</p>
+
+            <div className="flex flex-col space-y-2 mt-3">
+              {service.services.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-center space-x-3 text-sm text-gray-800 drop-shadow-sm transform transition-all duration-300 ${hoveredService === index ? 'translate-x-0 opacity-100' : 'translate-x-2 opacity-90'
+                    }`}
+                  style={{ transitionDelay: `${idx * 50}ms` }}
+                >
+                  <CheckCircle className="w-5 h-5 text-emerald-700 flex-shrink-0 group-hover:text-emerald-800 transition-colors duration-300 drop-shadow-sm" />
+                  <span className="group-hover:font-semibold transition-all duration-300">{item}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+        <div
+          className={`absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r ${service.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+        ></div>
+      </div>
+    </div >
+  );
+};
+
+
+export default ProfessionalServicesDisplay;
