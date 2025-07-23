@@ -31,19 +31,29 @@ const HomePage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-          <div className="min-h-screen bg-gradient-to-br from-stone-50 via-emerald-50/30 to-amber-50/20 font-lato">
-            <Navbar
-              isScrolled={isScrolled}
-              activeSection={activeSection}/>
-            <HeroSection/>
-            <AboutSection />
-            <ServicesSection />
-            <AppointmentsSection />
-            <ReviewsSection />
-            <Footer />
 
-            <style>{`
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-emerald-50/30 to-amber-50/20 font-lato">
+      <Navbar
+        isScrolled={isScrolled}
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+      />
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <AppointmentsSection />
+      <ReviewsSection />
+      <Footer />
+
+      <style>{`
               @keyframes spin-slow {
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
@@ -67,7 +77,7 @@ const HomePage = () => {
                 animation: spin-slowest 50s linear infinite;
               }
             `}</style>
-          </div>
+    </div>
   );
 };
 

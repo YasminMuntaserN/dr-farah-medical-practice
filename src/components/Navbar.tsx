@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 interface NavbarProps {
   isScrolled: boolean;
   activeSection: string;
+  scrollToSection: (section: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   isScrolled,
   activeSection,
+  scrollToSection,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,8 +26,9 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'contact', label: 'Contact' }
   ];
 
-  const handleNavClick = () => {
+  const handleNavClick = (item) => {
     setIsMobileMenuOpen(false);
+    scrollToSection(item.id);
   };
 
   const handleBookingClick = () => {
@@ -54,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({
             {navigationItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick()}
+                onClick={() => handleNavClick(item)}
                 className={`px-3 py-2 lg:px-4 lg:py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base ${activeSection === item.id
                   ? 'bg-emerald-100 text-emerald-700 shadow-md'
                   : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
@@ -86,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick()}
+                  onClick={() => handleNavClick(item)}
                   className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${activeSection === item.id
                     ? 'bg-emerald-100 text-emerald-700 shadow-md'
                     : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
