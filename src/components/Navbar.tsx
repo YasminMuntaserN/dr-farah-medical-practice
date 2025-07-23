@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   isScrolled: boolean;
   activeSection: string;
-  openBookingAndScroll: () => void;
-  scrollToSection: (sectionId: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   isScrolled,
   activeSection,
-  openBookingAndScroll,
-  scrollToSection,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navigationItems = [
     { id: 'home', label: 'Home' },
@@ -26,14 +24,13 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'contact', label: 'Contact' }
   ];
 
-  const handleNavClick = (sectionId: string) => {
-    scrollToSection(sectionId);
+  const handleNavClick = () => {
     setIsMobileMenuOpen(false);
   };
 
   const handleBookingClick = () => {
-    openBookingAndScroll();
     setIsMobileMenuOpen(false);
+    navigate('/booking');
   };
 
   return (
@@ -57,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({
             {navigationItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick()}
                 className={`px-3 py-2 lg:px-4 lg:py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base ${activeSection === item.id
                   ? 'bg-emerald-100 text-emerald-700 shadow-md'
                   : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
@@ -70,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={handleBookingClick}
-            className={`hidden md:block bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.beige} px-4 py-2 lg:px-6 lg:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm lg:text-base`}
+            className={`hidden md:block bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} px-4 py-2 lg:px-6 lg:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm lg:text-base`}
           >
             Book Now
           </button>
@@ -89,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
+                  onClick={() => handleNavClick()}
                   className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${activeSection === item.id
                     ? 'bg-emerald-100 text-emerald-700 shadow-md'
                     : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
@@ -100,7 +97,7 @@ const Navbar: React.FC<NavbarProps> = ({
               ))}
               <button
                 onClick={handleBookingClick}
-                className={`w-full mt-4 bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.beige} px-4 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
+                className={`w-full mt-4 bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} px-4 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
               >
                 Book Now
               </button>

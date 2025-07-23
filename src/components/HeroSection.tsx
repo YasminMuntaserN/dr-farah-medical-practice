@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Award, Shield, Star, Play } from 'lucide-react';
 import { COLORS } from '../utilities/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroSectionProps {
-  setShowBookingModal?: (show: boolean) => void;
   scrollToSection?: (sectionId: string) => void;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
-  setShowBookingModal = () => { },
   scrollToSection = () => { }
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 200);
@@ -72,7 +72,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               style={{ transitionDelay: '0.6s' }}>
 
               <button
-                onClick={() => setShowBookingModal(true)}
+                onClick={() => navigate('/booking')}
                 className={`group relative bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white} p-2 py-3 sm:py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 overflow-hidden w-full sm:flex-1 animate-bounce-in`}
                 style={{ animationDelay: '1.2s' }}>
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-emerald-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

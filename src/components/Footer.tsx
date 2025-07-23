@@ -1,11 +1,6 @@
-import React from 'react';
 import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
-interface FooterProps {
-  scrollToSection: (sectionId: string) => void;
-}
-
-const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
+const Footer = () => (
   <footer id='contact' className="bg-gray-900 text-beige relative overflow-hidden">
     <div className="absolute inset-0 opacity-10">
       <div
@@ -40,7 +35,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
             ].map((item) => (
               <li key={item.name}>
                 <button
-                  onClick={() => scrollToSection(item.section)}
+                  onClick={() => { }}
                   className="hover:text-emerald-400 transition-colors duration-300 text-sm md:text-base"
                 >
                   {item.name}
@@ -77,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
             </div>
           </div>
 
-          <div className="flex items-center justify-center space-x-3">
+          <div className="flex items-center justify-center space-x-3 lg:ml-0 ml-[-40px]">
             <div className="p-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg">
               <Phone className="w-5 h-5 text-beige" />
             </div>
@@ -87,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => (
             </div>
           </div>
 
-          <div className="flex items-center justify-center space-x-3">
+          <div className="flex items-center justify-center space-x-3 lg:ml-0 ml-[30px]">
             <div className="p-2 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-lg">
               <Mail className="w-5 h-5 text-beige" />
             </div>
