@@ -1,7 +1,18 @@
-import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 
 const Footer = () => (
-  <footer id='contact' className="bg-gray-900 text-beige relative overflow-hidden">
+  <footer
+    id="contact"
+    className="bg-gray-900 text-beige relative overflow-hidden"
+  >
     <div className="absolute inset-0 opacity-10">
       <div
         className="w-full h-full bg-gradient-to-br from-emerald-600/10 to-emerald-700/5"
@@ -26,16 +37,16 @@ const Footer = () => (
         <nav className="mb-8">
           <ul className="flex flex-wrap justify-center gap-8 text-gray-300">
             {[
-              { name: 'Home', section: 'home' },
-              { name: 'About Me', section: 'about' },
-              { name: 'Services', section: 'services' },
-              { name: 'Appointments', section: 'appointments' },
-              { name: 'Reviews', section: 'reviews' },
-              { name: 'Contact', section: 'contact' }
+              { name: "Home", section: "home" },
+              { name: "About Me", section: "about" },
+              { name: "Services", section: "services" },
+              { name: "Appointments", section: "appointments" },
+              { name: "Reviews", section: "reviews" },
+              { name: "Contact", section: "contact" },
             ].map((item) => (
               <li key={item.name}>
                 <button
-                  onClick={() => { }}
+                  onClick={() => {}}
                   className="hover:text-emerald-400 transition-colors duration-300 text-sm md:text-base"
                 >
                   {item.name}
@@ -47,10 +58,10 @@ const Footer = () => (
 
         <div className="flex justify-center space-x-4 mb-8">
           {[
-            { icon: Facebook, color: 'bg-blue-600 hover:bg-blue-700' },
-            { icon: Instagram, color: 'bg-pink-600 hover:bg-pink-700' },
-            { icon: Linkedin, color: 'bg-blue-700 hover:bg-blue-800' },
-            { icon: Youtube, color: 'bg-red-600 hover:bg-red-700' }
+            { icon: Facebook, color: "bg-blue-600 hover:bg-blue-700" },
+            { icon: Instagram, color: "bg-pink-600 hover:bg-pink-700" },
+            { icon: Linkedin, color: "bg-blue-700 hover:bg-blue-800" },
+            { icon: Youtube, color: "bg-red-600 hover:bg-red-700" },
           ].map((social, index) => (
             <button
               key={index}
@@ -78,7 +89,7 @@ const Footer = () => (
             </div>
             <div className="text-left">
               <p className="font-semibold text-beige">Phone</p>
-              <p className="text-sm">+27 123 456 789</p>
+              <p className="text-sm">+27 72 651 7740</p>
             </div>
           </div>
 
@@ -113,7 +124,6 @@ const Footer = () => (
             © Dr. Farah Dawood All Rights Reserved. Designed By Yasmin Muntaser
           </p>
         </div>
-
       </div>
     </div>
 

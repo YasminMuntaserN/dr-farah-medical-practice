@@ -1,51 +1,76 @@
-import { Calendar, QrCode, Phone, CheckCircle } from 'lucide-react';
-import { COLORS } from '../utilities/colors';
-import { useNavigate } from 'react-router-dom';
+import { Calendar, QrCode, Phone, CheckCircle } from "lucide-react";
+import { COLORS } from "../utilities/colors";
+import { useNavigate } from "react-router-dom";
 
 const AppointmentsSection = () => {
   const navigate = useNavigate();
 
   return (
     <div className={`min-h-screen relative overflow-hidden bg-beige font-lato`}>
-
       <section id="appointments" className="py-12 md:py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-light ${COLORS.text.primary} mb-6 leading-tight`}>
-              Book Your {' '}
-              <span className={`bg-gradient-to-r ${COLORS.text.accent} bg-clip-text text-transparent font-medium`}>
-                Appointment</span>
+            <h2
+              className={`text-4xl sm:text-5xl lg:text-6xl font-light ${COLORS.text.primary} mb-6 leading-tight`}
+            >
+              Book Your{" "}
+              <span
+                className={`bg-gradient-to-r ${COLORS.text.accent} bg-clip-text text-transparent font-medium`}
+              >
+                Appointment
+              </span>
             </h2>
             <p className={`text-lg ${COLORS.text.secondary} max-w-2xl mx-auto`}>
-              Schedule your consultation with Dr. Farah Dawood through multiple convenient booking options.
+              Schedule your consultation with Dr. Farah Dawood through multiple
+              convenient booking options.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-6">
-              <div className={`bg-gradient-to-br ${COLORS.background.cardGradient2} p-6 rounded-xl border border-emerald-100`}>
-                <h3 className={`text-xl font-semibold ${COLORS.text.primary} mb-4 flex items-center`}>
-                  <Calendar className={`w-5 h-5 ${COLORS.elements.emerald} mr-2`} />
+              <div
+                className={`bg-gradient-to-br ${COLORS.background.cardGradient2} p-6 rounded-xl border border-emerald-100`}
+              >
+                <h3
+                  className={`text-xl font-semibold ${COLORS.text.primary} mb-4 flex items-center`}
+                >
+                  <Calendar
+                    className={`w-5 h-5 ${COLORS.elements.emerald} mr-2`}
+                  />
                   Consultation Hours
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b border-emerald-200/50">
-                    <span className={`${COLORS.text.tertiary}`}>Monday - Friday</span>
-                    <span className={`${COLORS.elements.emerald} font-medium`}>08:00 - 17:00</span>
+                    <span className={`${COLORS.text.tertiary}`}>
+                      Monday - Friday
+                    </span>
+                    <span className={`${COLORS.elements.emerald} font-medium`}>
+                      08:00 - 17:00
+                    </span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-emerald-200/50">
                     <span className={`${COLORS.text.tertiary}`}>Saturday</span>
-                    <span className={`${COLORS.elements.emerald} font-medium`}>09:00 - 12:00</span>
+                    <span className={`${COLORS.elements.emerald} font-medium`}>
+                      09:00 - 12:00
+                    </span>
                   </div>
                   <div className="flex justify-between items-center py-2">
-                    <span className={`${COLORS.text.tertiary}`}>Sunday & Public Holidays</span>
-                    <span className={`${COLORS.elements.red} font-medium`}>Closed</span>
+                    <span className={`${COLORS.text.tertiary}`}>
+                      Sunday & Public Holidays
+                    </span>
+                    <span className={`${COLORS.elements.red} font-medium`}>
+                      Closed
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div className={`bg-gradient-to-br ${COLORS.background.earthCard} p-6 rounded-xl border border-stone-200`}>
-                <h3 className={`text-xl font-semibold ${COLORS.text.primary} mb-4 flex items-center`}>
+              <div
+                className={`bg-gradient-to-br ${COLORS.background.earthCard} p-6 rounded-xl border border-stone-200`}
+              >
+                <h3
+                  className={`text-xl font-semibold ${COLORS.text.primary} mb-4 flex items-center`}
+                >
                   <QrCode className={`w-5 h-5 ${COLORS.elements.stone} mr-2`} />
                   Quick Booking
                 </h3>
@@ -55,10 +80,17 @@ const AppointmentsSection = () => {
                       <QrCode className="w-12 h-12 text-beige" />
                     </div>
                   </div>
-                  <p className={`${COLORS.text.secondary} text-sm mb-3`}>Scan to Book Your Appointment</p>
+                  <p className={`${COLORS.text.secondary} text-sm mb-3`}>
+                    Scan to Book Your Appointment
+                  </p>
                   <button
-                    onClick={() => navigate('/booking')}
-                    className={`bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white.replace('white', 'beige')} px-4 py-2 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200`}
+                    onClick={() => navigate("/booking")}
+                    className={`bg-gradient-to-r ${
+                      COLORS.background.profileCard
+                    } ${COLORS.text.white.replace(
+                      "white",
+                      "beige"
+                    )} px-4 py-2 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200`}
                   >
                     Open Booking Portal
                   </button>
@@ -67,12 +99,23 @@ const AppointmentsSection = () => {
             </div>
 
             <div className="space-y-6">
-              <div className={`bg-gradient-to-br ${COLORS.background.cardGradient2} p-6 rounded-xl border border-emerald-100`}>
-                <h3 className={`text-xl font-semibold ${COLORS.text.primary} mb-4`}>Booking Options</h3>
+              <div
+                className={`bg-gradient-to-br ${COLORS.background.cardGradient2} p-6 rounded-xl border border-emerald-100`}
+              >
+                <h3
+                  className={`text-xl font-semibold ${COLORS.text.primary} mb-4`}
+                >
+                  Booking Options
+                </h3>
                 <div className="space-y-3">
-                  <button
-                    onClick={() => navigate('/booking')}
-                    className={`w-full bg-gradient-to-r ${COLORS.background.profileCard} ${COLORS.text.white.replace('white', 'beige')} p-3 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2`}
+                  {/* <button
+                    onClick={() => navigate("/booking")}
+                    className={`w-full bg-gradient-to-r ${
+                      COLORS.background.profileCard
+                    } ${COLORS.text.white.replace(
+                      "white",
+                      "beige"
+                    )} p-3 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2`}
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Online Booking (Bookem)</span>
@@ -83,12 +126,15 @@ const AppointmentsSection = () => {
                   >
                     <Phone className="w-4 h-4" />
                     <span>Call: +27 123 456 789</span>
-                  </a>
+                  </a> */}
                   <a
-                    href="https://wa.me/27123456789"
+                    href="https://wa.me/27726517740"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full bg-green-600 ${COLORS.text.white.replace('white', 'beige')} p-3 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2`}
+                    className={`w-full bg-green-600 ${COLORS.text.white.replace(
+                      "white",
+                      "beige"
+                    )} p-3 rounded-lg font-medium shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2`}
                   >
                     <Phone className="w-4 h-4" />
                     <span>WhatsApp Booking</span>
@@ -96,24 +142,46 @@ const AppointmentsSection = () => {
                 </div>
               </div>
 
-              <div className={`bg-gradient-to-br ${COLORS.background.nature} p-6 rounded-xl border border-emerald-100`}>
-                <h3 className={`text-lg font-semibold ${COLORS.text.primary} mb-3`}>Patient Information</h3>
+              <div
+                className={`bg-gradient-to-br ${COLORS.background.nature} p-6 rounded-xl border border-emerald-100`}
+              >
+                <h3
+                  className={`text-lg font-semibold ${COLORS.text.primary} mb-3`}
+                >
+                  Patient Information
+                </h3>
                 <ul className={`space-y-2 ${COLORS.text.tertiary}`}>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`} />
-                    <span className="text-sm">Arrive 10 minutes early for your appointment</span>
+                    <CheckCircle
+                      className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`}
+                    />
+                    <span className="text-sm">
+                      Arrive 10 minutes early for your appointment
+                    </span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`} />
-                    <span className="text-sm">Bring previous medical records or referrals</span>
+                    <CheckCircle
+                      className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`}
+                    />
+                    <span className="text-sm">
+                      Bring previous medical records or referrals
+                    </span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`} />
-                    <span className="text-sm">Private rates available on request</span>
+                    <CheckCircle
+                      className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`}
+                    />
+                    <span className="text-sm">
+                      Private rates available on request
+                    </span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`} />
-                    <span className="text-sm">Virtual consultations available</span>
+                    <CheckCircle
+                      className={`w-4 h-4 ${COLORS.elements.emerald} mt-0.5 flex-shrink-0`}
+                    />
+                    <span className="text-sm">
+                      Virtual consultations available
+                    </span>
                   </li>
                 </ul>
               </div>
