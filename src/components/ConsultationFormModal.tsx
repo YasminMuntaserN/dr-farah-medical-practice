@@ -281,39 +281,26 @@ const ConsultationFormPage = () => {
     setIsLoading(true);
   
     try {
-      const form = new FormData();
-      Object.keys(formData).forEach((key) => form.append(key, formData[key]));
-  
       const response = await fetch("/api/submitForm", {
         method: "POST",
-        body: form,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
   
       if (response.ok) {
         setShowSuccess(true);
-        setFormData({
-          fullName: "",
-          idNumber: "",
-          email: "",
-          phone: "",
-          reason: "",
-          medicalHistory: "",
-        });
+        setFormData({ fullName: "", idNumber: "", email: "", phone: "", reason: "", medicalHistory: "" });
       } else {
         throw new Error("Network response was not ok");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch (err) {
+      console.error("Error submitting form:", err);
       setShowError(true);
     } finally {
       setIsLoading(false);
     }
   };
   
-
   if (showSuccess) {
     return (
       <SuccessModal
