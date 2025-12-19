@@ -2,7 +2,6 @@ import {
   Stethoscope,
   CheckCircle,
   AlertCircle,
-  ArrowLeft,
   Mail,
   Phone,
   User,
@@ -288,7 +287,7 @@ const ConsultationFormPage = () => {
         form.append(key, formData[key]);
       });
 
-      const response = await fetch("https://formspree.io/f/mzzvepny", {
+      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
         method: "POST",
         body: form,
         headers: {
