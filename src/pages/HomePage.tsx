@@ -1,22 +1,29 @@
-import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import ServicesSection from './components/ServicesSection';
-import ReviewsSection from './components/ReviewsSection';
-import AppointmentsSection from './components/AppointmentsSection';
-import Footer from './components/Footer';
+import { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
+import AboutSection from "../components/AboutSection";
+import ServicesSection from "../components/ServicesSection";
+import ReviewsSection from "../components/ReviewsSection";
+import AppointmentsSection from "../components/AppointmentsSection";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ['home', 'about', 'services', 'appointments', 'reviews', 'contact'];
-      const current = sections.find(section => {
+      const sections = [
+        "home",
+        "about",
+        "services",
+        "appointments",
+        "reviews",
+        "contact",
+      ];
+      const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -27,15 +34,14 @@ const HomePage = () => {
       if (current) setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+      behavior: "smooth",
+      block: "start",
     });
   };
 

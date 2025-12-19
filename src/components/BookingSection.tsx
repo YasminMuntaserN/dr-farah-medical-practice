@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { COLORS } from "../utilities/colors";
+import { useNavigate } from "react-router-dom";
 
-const BookingSection = ({ setShowConsultationForm }) => {
+const BookingSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="booking" className="relative z-10 min-h-screen ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-5">
@@ -13,7 +16,7 @@ const BookingSection = ({ setShowConsultationForm }) => {
               Book Your Appointment
             </h1>
             <button
-              onClick={() => setShowConsultationForm(true)}
+              onClick={() => navigate('/booking-form')}
               className={`mt-4 px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-emerald-100/60 text-emerald-700 bg-gradient-to-br from-emerald-200 via-beige to-emerald-100 shadow-sm hover:shadow-md animate-fade-in`}
             >
               Already booked? Complete your consultation form here.
