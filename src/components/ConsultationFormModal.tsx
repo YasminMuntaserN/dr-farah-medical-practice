@@ -276,25 +276,22 @@ const ConsultationFormPage = () => {
   };
 
   const handleSubmit = async () => {
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
+  
     setIsLoading(true);
-
+  
     try {
       const form = new FormData();
-      Object.keys(formData).forEach((key) => {
-        form.append(key, formData[key]);
-      });
-
+      Object.keys(formData).forEach((key) => form.append(key, formData[key]));
+  
       const response = await fetch("/api/submitForm", {
         method: "POST",
-        body: form, 
+        body: form,
         headers: {
           Accept: "application/json",
         },
       });
-      
+  
       if (response.ok) {
         setShowSuccess(true);
         setFormData({
@@ -315,6 +312,7 @@ const ConsultationFormPage = () => {
       setIsLoading(false);
     }
   };
+  
 
   if (showSuccess) {
     return (
