@@ -287,14 +287,14 @@ const ConsultationFormPage = () => {
         form.append(key, formData[key]);
       });
 
-      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
+      const response = await fetch("/api/submitForm", {
         method: "POST",
-        body: form,
+        body: form, 
         headers: {
           Accept: "application/json",
         },
       });
-
+      
       if (response.ok) {
         setShowSuccess(true);
         setFormData({
